@@ -37,7 +37,6 @@ const ModeSwitcher = styled.div`
 	cursor: pointer;
 	// font-weight: var(--fw-bold);
 	text-transform: capitalize;
-	transition: 0.5s all;
 `;
 
 export const Header = () => {
