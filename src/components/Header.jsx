@@ -1,61 +1,43 @@
 import styled from 'styled-components';
-import {useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import { IoMoon, IoMoonOutline } from 'react-icons/io5';
 
 import { Container } from './Container';
+import { useCleanUp } from '../features/controls/use-cleanUp';
+import { ThemeSwitcher } from '../features/theme/ThemeSwitcher';
 
 const HeaderEl = styled.header`
-  box-shadow: var(--shadow);
-  background-color: var(--colors-ui-base);
+	box-shadow: var(--shadow);
+	background-color: var(--colors-ui-base);
+	transition: 0.5s all;
 `;
 
 const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2rem 0;
 `;
 
 const Title = styled(Link).attrs({
-  to: '/',
+	to: '/',
 })`
-  color: var(--colors-text);
-  font-size: var(--fs-sm);
-  text-decoration: none;
-  font-weight: var(--fw-bold);
-`;
-
-const ModeSwitcher = styled.div`
-  color: var(--colors-text);
-  font-size: var(--fs-sm);
-  cursor: pointer;
-  // font-weight: var(--fw-bold);
-  text-transform: capitalize;
+	color: var(--colors-text);
+	font-size: var(--fs-sm);
+	text-decoration: none;
+	font-weight: var(--fw-bold);
 `;
 
 export const Header = () => {
-  const theme = 'light';
+	const cleanUp = useCleanUp();
 
-  useEffect(() => {
-    document.body.setAttribute('data-theme', theme);
-  }, [theme]);
-
-  return (
-    <HeaderEl>
-      <Container>
-        <Wrapper>
-          <Title>Where is the world?</Title>
-          <ModeSwitcher>
-            {theme === 'light' ? (
-              <IoMoonOutline size="14px" />
-            ) : (
-              <IoMoon size="14px" />
-            )}{' '}
-            <span style={{ marginLeft: '0.75rem' }}>{theme} Theme</span>
-          </ModeSwitcher>
-        </Wrapper>
-      </Container>
-    </HeaderEl>
-  );
+	return (
+		<HeaderEl>
+			<Container>
+				<Wrapper>
+					<Title onClick={cleanUp}>Where is the world?</Title>
+					<ThemeSwitcher />
+				</Wrapper>
+			</Container>
+		</HeaderEl>
+	);
 };

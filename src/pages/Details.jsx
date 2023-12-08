@@ -2,21 +2,19 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
 
 import { Button } from '../components/Button';
-import { Info } from '../components/Info';
-
+import { DetailsCountry } from '../features/details/DetailsCountry';
 
 export const Details = () => {
-  const { name } = useParams();
-  const navigate = useNavigate();
+	const navigate = useNavigate();
+	const { name } = useParams();
 
-  const currentCountry = null;
+	return (
+		<div>
+			<Button onClick={() => navigate(-1)}>
+				<IoArrowBack /> Back
+			</Button>
 
-  return (
-    <div>
-      <Button onClick={() => navigate(-1)}>
-        <IoArrowBack /> Back
-      </Button>
-      {currentCountry && <Info push={navigate} {...currentCountry} />}
-    </div>
-  );
+			<DetailsCountry name={name} navigate={navigate} />
+		</div>
+	);
 };
