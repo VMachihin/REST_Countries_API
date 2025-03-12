@@ -4,10 +4,10 @@
 
 ## Используемые технологии:
 1. React
-2. Redux
-3. Styled Components
+2. TypeScript
+3. Redux
+4. Styled Components
 
 ## [API](https://restcountries.com/)
 
-### Планируемые доработки:
-1. Подключение TypeScript.
+
